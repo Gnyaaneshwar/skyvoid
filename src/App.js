@@ -74,21 +74,8 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    const lastCity = localStorage.getItem("lastCity");
-    if (lastCity) {
-      searchCity(lastCity);
-    }
-    
-    // Note: The global mouse tracker was in your original code; 
-    // the WeatherCursor component now handles its own internal mouse tracking via R3F.
-  }, [searchCity]);
-
-  function toggleTheme() {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  }
-
-  function currentLocation() {
+  // 1. Wrapped in useCallback and updated to auto-save the city
+  const currentLocation = useCallback(() => {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         setLoading(true);
@@ -102,14 +89,31 @@ function App() {
           setWeather(current);
           setForecast(forecastData.list.filter((item, index) => index % 8 === 0));
           setAqi(air);
+
+          // Save this detected city so it loads instantly next time
+          localStorage.setItem("lastCity", current.name);
         } catch {
           setError("Unable to fetch location.");
         } finally {
           setLoading(false);
         }
       },
-      () => setError("Location permission denied.")
+      () => setError("Location permission denied. Please search manually.")
     );
+  }, []);
+
+  // 2. Updated useEffect to trigger currentLocation if no city is found
+  useEffect(() => {
+    const lastCity = localStorage.getItem("lastCity");
+    if (lastCity) {
+      searchCity(lastCity);
+    } else {
+      currentLocation();
+    }
+  }, [searchCity, currentLocation]);
+
+  function toggleTheme() {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   }
 
   function addFavorite() {
