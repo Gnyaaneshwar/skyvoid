@@ -1,0 +1,57 @@
+.glass{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(24px);
+
+-webkit-backdrop-filter:blur(24px);
+
+border-radius:30px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.30);
+
+transition:
+transform .35s ease,
+box-shadow .35s ease,
+border-color .35s ease;
+
+animation:fadeUp .8s ease;
+
+}
+
+.glass:hover{
+
+transform:
+translateY(-8px)
+scale(1.01);
+
+border-color:rgba(88,225,255,.45);
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.45),
+0 0 35px rgba(88,225,255,.18);
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}

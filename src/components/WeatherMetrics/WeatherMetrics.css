@@ -1,0 +1,86 @@
+.metrics { 
+    display: grid !important; /* Locks the Grid permanently */
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
+    gap: 12px; 
+    height: 100%; 
+    width: 100%;
+    align-content: stretch; 
+    perspective: 1000px; 
+}
+
+.metric-card { 
+    background: rgba(255, 255, 255, 0.03); /* Restores the card background */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%; 
+    height: 100%; 
+    min-height: 0; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 8px; 
+    border-radius: 20px; 
+    position: relative; 
+    overflow: hidden; 
+    transform-style: preserve-3d; 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; 
+}
+
+.metric-card::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: radial-gradient(circle at top right, rgba(88, 225, 255, .12), transparent 70%); 
+    opacity: 0; 
+    transition: .35s; 
+}
+
+.metric-card:hover::before { opacity: 1; }
+
+.metric-card:hover { 
+    transform: translateY(-5px) rotateX(8deg) rotateY(-8deg) scale3d(1.03, 1.03, 1.03); 
+    box-shadow: -10px 15px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(88, 225, 255, 0.15); 
+}
+
+.metric-icon { 
+    color: #58E1FF; 
+    margin-bottom: 6px; 
+    transition: .3s; 
+}
+
+.metric-card:hover .metric-icon { transform: scale(1.1); }
+
+.metric-card h2 { 
+    font-size: 20px; 
+    margin: 0 0 2px 0; 
+    line-height: 1; 
+    font-weight: 700; 
+}
+
+.metric-card p { 
+    font-size: 11px; 
+    color: #A5B4C7; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    margin: 0; 
+}
+
+@media (max-width: 768px) {
+    .metrics {
+        /* Keep 2 columns, but force a minimum height so they don't squish */
+        grid-template-rows: repeat(3, 130px); 
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics {
+        /* Stack to 1 column on very narrow phones */
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto;
+    }
+    .metric-card {
+        min-height: 120px;
+    }
+}

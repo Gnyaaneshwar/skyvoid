@@ -1,0 +1,97 @@
+.assistant {
+    padding: 12px 16px; 
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* Added premium glass border */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+}
+
+.assistant::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    top: -150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(88,225,255,.15), transparent 70%);
+    filter: blur(60px);
+}
+
+.assistant-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px; /* Tighter margin */
+    color: #58E1FF;
+    position: relative;
+    z-index: 2;
+}
+
+.assistant-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+/* =========================================
+   ULTRA-COMPACT SCROLLABLE BODY
+========================================= */
+.assistant-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Drastically reduced gap between tips */
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+.assistant-body::-webkit-scrollbar { width: 4px; }
+.assistant-body::-webkit-scrollbar-thumb { background: rgba(88,225,255,0.3); border-radius: 10px; }
+
+/* =========================================
+   COMPACT AI TIP CARDS
+========================================= */
+.assistant-tip {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 8px 12px; /* Slimmer inner padding */
+    transition: .35s ease;
+    min-height: 0; /* Removes the strict height limit so it shrinks naturally */
+}
+
+.assistant-tip:hover {
+    transform: translateX(4px);
+    border-color: #58E1FF;
+    background: rgba(88,225,255,.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.tip-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px; /* Shrunk icon wrapper */
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0; 
+}
+
+.assistant-tip p {
+    margin: 0;
+    font-size: 11px; /* Scaled down slightly to prevent multi-line wrapping */
+    color: #E2E8F0;
+    line-height: 1.3;
+    font-weight: 500;
+}

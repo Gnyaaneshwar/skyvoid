@@ -1,0 +1,116 @@
+.air-quality {
+    padding: 12px 16px; 
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Added premium glass border */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+}
+.air-quality::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -150px;
+    top: -150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(88,225,255,.15), transparent 70%);
+    filter: blur(60px);
+}
+
+.aqi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0; /* Completely removed bottom margin */
+    position: relative;
+    z-index: 2;
+}
+
+.aqi-header h2 { 
+    font-size: 18px; 
+    font-weight: 700; 
+    margin: 0; 
+}
+
+.aqi-header span { 
+    font-size: 13px; 
+    font-weight: 700; 
+}
+
+/* =========================================
+   COMPACT AQI SCORE 
+========================================= */
+.aqi-score {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 0; /* Bare minimum margin */
+    position: relative;
+    z-index: 2;
+}
+
+.aqi-score h1 {
+    font-size: 38px; /* Scaled down again */
+    line-height: 1;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* =========================================
+   ULTRA-COMPACT BOTTOM DETAILS GRID
+========================================= */
+.aqi-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px; /* Tightest gap */
+    position: relative;
+    z-index: 2;
+    margin-top: auto; 
+}
+
+.aqi-details div {
+    padding: 6px 2px; /* Ultra-slim padding so the boxes don't grow too tall */
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 42px; /* Drastically reduced minimum height */
+}
+
+.aqi-details div:hover {
+    transform: translateY(-3px);
+    border-color: #58E1FF;
+}
+
+.aqi-details small {
+    display: block;
+    color: #94A3B8;
+    margin-bottom: 2px;
+    font-size: 8px; /* Micro-font for labels */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aqi-details strong { 
+    font-size: 12px; 
+    font-weight: 700; 
+}
+
+.aqi-empty {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #94A3B8;
+    font-size: 14px;
+}

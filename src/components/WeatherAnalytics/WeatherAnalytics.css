@@ -1,0 +1,98 @@
+.analytics { 
+    padding: 16px 20px; 
+    position: relative; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    /* Added matching premium border from WeatherOverview */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+}
+
+.analytics::before { 
+    content: ""; 
+    position: absolute; 
+    width: 320px; 
+    height: 320px; 
+    right: -160px; 
+    top: -160px; 
+    background: radial-gradient(circle, rgba(88,225,255,.12), transparent 70%); 
+    filter: blur(60px); 
+}
+
+.analytics > * { 
+    position: relative; 
+    z-index: 2; 
+}
+
+.analytics-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+}
+
+.analytics-header h2 { 
+    font-size: 18px; 
+    font-weight: 700; 
+    margin: 0; 
+}
+
+.analytics-header span { 
+    color: #94A3B8; 
+    font-size: 12px; 
+}
+
+.chart-container { 
+    width: 100%; 
+    flex: 1; 
+    min-height: 0; 
+    padding-bottom: 12px; /* Protected X-axis spacing */
+}
+
+/* =========================================
+   SVG GLOW EFFECT
+========================================= */
+/* This targets the SVG line drawn by Recharts and makes it physically glow */
+.recharts-area-area {
+    filter: drop-shadow(0 8px 10px rgba(88,225,255,0.25));
+}
+
+/* =========================================
+   CUSTOM GLASS TOOLTIP
+========================================= */
+.custom-tooltip {
+    background: rgba(16, 28, 45, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(88, 225, 255, 0.3);
+    border-radius: 12px;
+    padding: 8px 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.tooltip-label {
+    margin: 0 0 4px 0;
+    font-size: 11px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tooltip-temp {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #58E1FF;
+}
+
+.analytics-empty { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #94A3B8; 
+    font-size: 14px; 
+}

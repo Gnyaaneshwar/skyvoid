@@ -1,0 +1,173 @@
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+    background: #07111F;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: white;
+}
+
+.app {
+    max-width: 1700px;
+    height: 100vh; 
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.bento-main {
+    flex: 1; 
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr; 
+    gap: 14px;
+    min-height: 0; 
+    z-index: 2;
+}
+
+.bento-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+}
+
+.bento-col-left > :first-child { flex: 1.2; min-height: 0; }
+.bento-col-left > :last-child { flex: 1; min-height: 0; }
+.bento-col-middle { display: flex; }
+.bento-col-middle > * { flex: 1; min-height: 0; }
+.bento-col-right > * { flex: 1; min-height: 0; }
+
+/* Replace with this: */
+.bento-main section.glass {
+    margin: 0 !important; 
+    height: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden; 
+}
+
+.bento-main div.metrics {
+    margin: 0 !important; 
+    height: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    /* We removed display: flex here so the Grid can work! */
+}
+
+.bento-col-right > section.glass > .assistant-body,
+.bento-col-right > section.glass > .favorite-grid,
+.bento-col-right > section.glass > .aqi-details {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.bento-main *::-webkit-scrollbar { display: none !important; }
+.bento-main * { scrollbar-width: none !important; }
+
+.quote-strip {
+    margin: 0 !important;
+    padding: 0 25px !important;
+    height: 45px !important; 
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.quote-strip p {
+    margin: 0;
+    font-size: 14px;
+    color: #A5B4C7;
+    font-style: italic;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(600px circle at var(--x, 50vw) var(--y, 50vh), rgba(88, 225, 255, 0.08), transparent 40%);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.app.clear::before { background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%); }
+.app.clear::after { background: radial-gradient(circle, rgba(15, 76, 129, 0.3), transparent 70%); }
+.app.rain::before, .app.drizzle::before { background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%); }
+.app.rain::after, .app.drizzle::after { background: radial-gradient(circle, rgba(30, 64, 175, 0.2), transparent 70%); }
+.app.thunderstorm::before { background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%); }
+.app.thunderstorm::after { background: radial-gradient(circle, rgba(76, 29, 149, 0.3), transparent 70%); }
+
+/* =========================================
+   RESPONSIVE LAYOUT (Tablet & Mobile)
+   ========================================= */
+
+@media (max-width: 1100px) {
+    /* Allow scrolling instead of locking to 100vh */
+    html, body, #root {
+        overflow: auto; 
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .app {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
+    /* Switch from 3 columns to 2 columns */
+    .bento-main {
+        grid-template-columns: 1fr 1fr; 
+        height: auto;
+    }
+
+    /* Make the third column (Assistant, AQI, Favorites) span full width at the bottom */
+    .bento-col-right {
+        grid-column: span 2; 
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+    }
+    
+    .bento-col-right > * {
+        min-height: 250px; /* Give them breathing room */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack everything into 1 column for mobile */
+    .bento-main {
+        grid-template-columns: 1fr; 
+        display: flex; 
+        flex-direction: column;
+    }
+
+    .bento-col-right {
+        grid-column: span 1;
+        grid-template-columns: 1fr; /* Stack bottom widgets vertically */
+    }
+
+    /* Ensure panels don't shrink too much */
+    .bento-col-left > *,
+    .bento-col-middle > *,
+    .bento-col-right > * {
+        min-height: 300px; 
+    }
+}

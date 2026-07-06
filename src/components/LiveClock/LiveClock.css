@@ -1,0 +1,35 @@
+.live-clock{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:flex-end;
+
+}
+
+.live-clock h3{
+
+font-size:15px;
+
+font-weight:500;
+
+color:#94A3B8;
+
+margin-bottom:6px;
+
+}
+
+.live-clock h1{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#58E1FF;
+
+letter-spacing:1px;
+
+}

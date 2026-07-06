@@ -1,0 +1,98 @@
+.search-container { width: 100%; display: flex; justify-content: center; }
+.search-header { display: flex; align-items: center; gap: 28px; }
+
+.search-box {
+    display: flex; align-items: center; width: 380px; height: 54px; padding: 0 20px;
+    background: rgba(16, 28, 45, .65); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, .10); border-radius: 60px; transition: all .35s ease; position: relative;
+}
+.search-box:hover { border-color: rgba(88, 225, 255, .25); }
+.search-box:focus-within { border-color: #58E1FF; box-shadow: 0 0 35px rgba(88, 225, 255, .22); }
+.search-icon { color: #94A3B8; }
+
+.search-box input { flex: 1; margin-left: 16px; background: none; border: none; outline: none; color: white; font-size: 17px; }
+.search-box input::placeholder { color: #94A3B8; }
+
+.search-box button {
+    height: 42px; padding: 0 26px; border: none; border-radius: 40px;
+    background: linear-gradient(135deg, #58E1FF, #5EEAD4); font-weight: 700; cursor: pointer; transition: all .3s ease; color: #07111F;
+}
+.search-box button:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 30px rgba(88, 225, 255, .35); }
+.search-box button:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+
+.actions { display: flex; justify-content: flex-end; gap: 14px; }
+.circle-btn {
+    width: 48px; height: 48px; border: none; border-radius: 50%;
+    background: rgba(16, 28, 45, .70); backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, .08);
+    color: white; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all .3s ease;
+}
+.circle-btn:hover { background: #58E1FF; color: #07111F; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(88, 225, 255, .30); }
+
+.search-dropdown {
+    position: absolute; top: 62px; left: 0; width: 100%;
+    background: rgba(16, 28, 45, 0.95); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(88, 225, 255, 0.3); border-radius: 24px; padding: 12px 0; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); z-index: 1000; overflow: hidden;
+}
+.dropdown-header { padding: 8px 24px 12px 24px; font-size: 12px; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 8px; }
+.dropdown-item { padding: 14px 24px; color: white; cursor: pointer; font-size: 16px; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; text-transform: capitalize; }
+.dropdown-icon { color: #94A3B8; transition: all 0.2s ease; }
+.dropdown-item:hover { background: rgba(88, 225, 255, 0.12); color: #58E1FF; padding-left: 32px; }
+.dropdown-item:hover .dropdown-icon { color: #58E1FF; }
+
+@media (max-width: 768px) {
+    .search-container {
+        width: 100%;
+    }
+    .search-header {
+        width: 100%;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .search-box {
+        width: 100%; /* Fluid width instead of 380px */
+        max-width: 100%;
+    }
+    .actions {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* =========================================
+   STRICT MOBILE VIEW (Max 600px)
+   ========================================= */
+@media (max-width: 600px) {
+    .search-container {
+        width: 100%;
+    }
+    
+    .search-header {
+        flex-direction: column !important; /* Stacks the search box and the round buttons */
+        width: 100%;
+        gap: 14px;
+    }
+    
+    .search-box {
+        width: 100% !important;
+        max-width: 100%;
+        height: 50px; /* Slightly slimmer height for mobile */
+        padding: 0 10px 0 16px; /* Adjust inner padding so the button fits */
+    }
+    
+    .search-box input {
+        font-size: 15px; /* Slightly smaller text */
+        margin-left: 10px;
+    }
+    
+    .search-box button {
+        padding: 0 16px; /* Shrinks the search button slightly so it doesn't overflow */
+        height: 38px;
+        font-size: 14px;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: center !important;
+        gap: 20px; /* Spreads the location and theme buttons out nicely */
+    }
+}

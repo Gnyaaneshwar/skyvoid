@@ -1,0 +1,121 @@
+/* =========================================
+   HEADER LAYOUT (Pulled up & Centered)
+========================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This forces Logo, Search, and Time to perfectly center vertically */
+    width: 100%;
+    margin-top: -4px; /* Pulls the header up roughly 1 cursor space */
+    margin-bottom: 8px; /* Tighter gap to the Bento Grid below */
+}
+
+/* =========================================
+   LOGO STYLING
+========================================= */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    min-width: 220px; 
+}
+
+.logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text-wrapper h1 {
+    font-size: 38px;
+    letter-spacing: 4px;
+    font-weight: 900;
+    color: #58E1FF;
+    margin: 0; 
+    line-height: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.logo-cloud {
+    position: absolute;
+    right: -30px; /* Positions the cloud perfectly around the D */
+    top: -6px;
+    color: #94A3B8;
+    opacity: 0.8;
+}
+
+/* Specifically targets the subtitle now! */
+.logo-subtitle {
+    margin-top: 6px;
+    color: #94A3B8;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   SEARCH BAR WRAPPER
+========================================= */
+.search-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* =========================================
+   FIXED TIMEZONE WIDGET
+========================================= */
+.live-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Snaps the text cleanly to the right edge */
+    justify-content: center;
+    min-width: 220px; /* Mirrors the logo width for perfect center alignment of the search bar */
+}
+
+.live-time .date {
+    font-size: 12px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.live-time .time {
+    font-size: 24px; /* Scaled down so it isn't awkward or massive */
+    font-weight: 800;
+    color: #58E1FF;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 15px rgba(88, 225, 255, 0.3);
+}
+
+/* =========================================
+   STRICT MOBILE VIEW (Max 600px)
+   ========================================= */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .logo-wrapper {
+        min-width: 100%;
+        justify-content: center;
+    }
+    
+    .search-wrapper {
+        width: 100%;
+        order: 2; /* Ensures search bar stays in the middle */
+    }
+    
+    .live-time {
+        min-width: 100%;
+        align-items: center !important; /* Centers the time under the search bar */
+        order: 3;
+    }
+}

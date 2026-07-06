@@ -1,0 +1,21 @@
+.dashboard-wrapper{
+
+display:flex;
+
+flex-direction:column;
+
+gap:35px;
+
+}
+
+.dashboard-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:30px;
+
+align-items:stretch;
+
+}
