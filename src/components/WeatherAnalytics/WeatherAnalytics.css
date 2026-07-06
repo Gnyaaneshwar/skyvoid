@@ -97,10 +97,17 @@
     font-size: 14px; 
 }
 /* =========================================
-   MOBILE CHART FIX
+   STRICT MOBILE CHART FIX
    ========================================= */
 @media (max-width: 768px) {
-    .chart-container {
-        min-height: 220px; /* Forces Recharts to have enough room to render on phones */
+    .analytics {
+        min-height: 300px !important; /* Forces the whole glass card to stay tall */
     }
+    
+    .chart-container {
+        height: 220px !important; /* Forces the exact height of the chart */
+        min-height: 220px !important;
+        flex: none !important; /* Stops flexbox from trying to collapse it */
+    }
+
 }
