@@ -96,3 +96,11 @@
     color: #94A3B8; 
     font-size: 14px; 
 }
+/* =========================================
+   MOBILE CHART FIX
+   ========================================= */
+@media (max-width: 768px) {
+    .chart-container {
+        min-height: 220px; /* Forces Recharts to have enough room to render on phones */
+    }
+}
