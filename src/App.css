@@ -171,3 +171,65 @@ body::after {
         min-height: 300px; 
     }
 }
+
+/* =========================================
+   LIGHT MODE THEME OVERRIDES
+   ========================================= */
+
+/* 1. Change the main background */
+.app.light {
+    background: #F8FAFC !important;
+}
+
+/* 2. Invert all text colors for readability */
+.app.light, 
+.app.light h1, 
+.app.light h2, 
+.app.light h3,
+.app.light h4,
+.app.light p, 
+.app.light span, 
+.app.light small, 
+.app.light strong,
+.app.light .dropdown-item {
+    color: #0F172A !important;
+}
+
+/* 3. Make all glass cards frosted white */
+.app.light .glass,
+.app.light .metric-card,
+.app.light .assistant-tip,
+.app.light .favorite-card,
+.app.light .aqi-details div,
+.app.light .search-dropdown {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 4. Update the Search Bar and Header Buttons */
+.app.light .search-box, 
+.app.light .circle-btn,
+.app.light .weather-actions,
+.app.light .today-badge {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #0F172A !important;
+}
+
+.app.light .search-box input {
+    color: #0F172A !important;
+}
+
+.app.light .search-box input::placeholder {
+    color: #94A3B8 !important;
+}
+
+/* 5. Darken the cyan accents slightly for better contrast */
+.app.light .metric-icon,
+.app.light .live-time .time,
+.app.light .logo-text-wrapper h1,
+.app.light .favorite-icon,
+.app.light .assistant-header {
+    color: #0284C7 !important; 
+}
