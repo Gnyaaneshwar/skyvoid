@@ -137,6 +137,7 @@ function App() {
         onSearch={searchCity}
         onCurrentLocation={currentLocation}
         onToggleTheme={toggleTheme}
+        timezone={weather ? weather.timezone : null} /* Add this line! */
       />
       
       {loading && (
